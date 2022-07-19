@@ -1,0 +1,19 @@
+ body {
+     background-color: rgb(0, 0, 0);
+     background-image: url(./assets/image/texture-of-paper-background-of-sheet-of-paper-with-lines-for-writing-vector.jpg);
+     color: black;
+     position: relative;
+ }
+
+ .main {
+     display: row;
+     margin-top: auto;
+     width: 50rem;
+ }
+
+ .user {
+     display: flex;
+     flex-direction: row;
+     margin: auto;
+     width: auto;
+ }

@@ -1,48 +1,60 @@
-class user {
-  constructor(nombre, rol, tareas = "sentate y relajate") {
-    this.nombre = nombre;
-    this.rol = rol;
-    this.tareas = tareas;
+class User {
+  constructor( nombreTarea, textoTarea = "sentate y relajate") {
+    this.nombre = nombreTarea;
+    this.texto = textoTarea;
   }
 }
 
-// const usuario1 = new user("Franco Carrazana", "Empleado", 1, "VALIACION");
-// const usuario2 = new user("David Pereyra", "Empleado", 2, "PEDIDOS");
-// const usuario3 = new user("Federico Celis", "Empleado", 3, "ATENCION");
-// const usuario4 = new user("Cristian Bianco", "jefe", 4);
-// const miembros = [usuario1, usuario2, usuario3, usuario4];
+let tareas = []
 
-function usuarios() {
-  const recibirId = document.getElementById('idForm');
-  const divUsuarios = document.getElementById('divUsuarios')
-  const algo = []
-
- recibirId.addEventListener('submit', (e) => {
-      e.preventDefault();
-     let nombre = document.getElementById('nombrePersonal').value
-     let rol = document.getElementById('rolPersonal').value
-     let tareas = document.getElementById('tareasPersonal').value
-     const sendId = new user(nombre, rol ,tareas);
-    
-     algo.push(sendId);
-     console.log(algo);
-     recibirId.reset();
-     });
- 
-  document.getElementById('botonUsuarios').addEventListener('click', () =>{
-    algo.forEach(algo => {
-      divUsuarios.innerHTML += `
-      <div class="card" style="width: 18rem;">
-    
-        <div class="card-body">
-            <h5 class="card-title">${algo.nombre}</h5>
-            <p class="card-text">${algo.rol}</p>
-            <p class="card-text">${algo.tareas}</p>
-        </div>
-    </div>
-      `
-    });
-  })
+if (localStorage.getItem('storageUsuarios')){
+ tareas = JSON.parse(localStorage.getItem('storageUsuarios'))
+} else {
+  localStorage.setItem('storageUsuarios', JSON.stringify(tareas));
 }
 
-usuarios();
+if (localStorage.getItem('storageUsuarios')){
+  tareas = JSON.parse(localStorage.getItem('storageUsuarios'))
+ } else {
+   localStorage.setItem('storageUsuarios', JSON.stringify(tareas));
+ }
+
+const formTareas = document.getElementById('idForm')
+const botonUsuarios = document.getElementById('botonUsuarios')
+const divUsuarios = document.getElementById('divUsuarios')
+
+formTareas.addEventListener('submit', (e) => {
+e.preventDefault();
+console.log(e)
+let newData = new FormData (e.target)
+const tarea = new User (newData.get('nombre'), newData.get('texto'))
+tareas.push(tarea)
+localStorage.setItem('storageUsuarios', JSON.stringify(tareas))
+formTareas.reset()
+})
+
+botonUsuarios.addEventListener('click', () => {
+  let storageUsuarios = JSON.parse(localStorage.getItem('storageUsuarios'))
+  divUsuarios.innerHTML = ""
+  storageUsuarios.forEach((tarea,indice) =>{
+    divUsuarios.innerHTML += `
+    <div class="card border-dark mb-3" id="tarea${indice}" style="max-width: 20rem;">
+  <div class="card-header">Tarea</div>
+  <div class="card-body">
+    <h4 class="card-title">${tarea.nombre}</h4>
+    <p class="card-text">${tarea.texto}</p>
+    <button class="btn btn-danger">Eliminar Tarea</button>
+  </div>
+</div>
+    `
+  })
+  storageUsuarios.forEach((tarea,indice)=> {
+    document.getElementById(`tarea${indice}`).lastElementChild.lastElementChild.addEventListener('click', () => {
+      document.getElementById(`tarea${indice}`).remove();
+      tareas.splice(indice, 1);
+      localStorage.setItem('storageUsuarios', JSON.stringify(tareas))
+      console.log(`${tarea.nombre} eliminada`)
+      console.log(tareas)
+    })
+  })
+})
