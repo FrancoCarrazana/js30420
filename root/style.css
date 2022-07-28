@@ -17,3 +17,9 @@
      margin: auto;
      width: auto;
  }
+
+ .swal2-popup {
+     display: flex;
+     margin-top: s;
+     width: 100rem;
+ }
