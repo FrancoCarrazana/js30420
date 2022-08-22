@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>TIENDA JS</title>
+</head>
+
+<body>
+
+    <header id="header">
+
+        <!-- navbar -->
+
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Js CoderHouse</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+                    aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- carousel -->
+
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./assets/image/publicidad-carrucel.jpg" class="d-block w-100" alt="carousel 1">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/image/publicidad-carrucel-2.jpg" class="d-block w-100" alt="carousel 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="./assets/image/publicidad-carrucel-3.jpg" class="d-block w-100" alt="carousel 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <body>
+            <h1>Simulador de Carga de juegos</h1>
+            <div class="form">
+                <form id="chargeForm" class="chargeForm">
+                    <h4>Nombre del Juego</h4> <br>
+                    <input type="text" id="nameProduct" required>
+                    <h4>Precio del Precio</h4> <br>
+                    <input type="number" id="priceProduct" required>
+                    <h4>Stock del Juego</h4> <br>
+                    <input type="number" id="stockProduct" required><br>
+                    <button type="submit" id="send" class="btn btn-primary" value="Cargar datos">Cargar datos</button>
+                </form>
+            </div>
+            <div class="orderDiv">
+                <div class="orderButton">
+                    <input type="button" class="btn btn-primary" id="order" value="Ordenar de...">
+                </div>
+                <div>
+                    <select id="orderProduct" class="btn btn-primary">
+                        <option value="" disabled> Elige una opcion</option>
+                        <option id="minor" value="minor">De menor a mayor</option>
+                        <option id="elderly" value="elderly">De mayor a menor</option>
+                    </select>
+                </div>
+            </div>
+            <div id="product" class="productDiv"></div>
+            <br><hr>
+<!-- incorporando api -->
+    <div id="container row">
+        <h2>Top juegos que no te podes perder</h2>
+        <div class="juegos row " id="juegos"></div>
+    </div>
+    <footer id="footer">
+
+        <a href="">Contacto</a>
+        <P>Copyright &copy; todos los derechos reservados</P>
+
+    </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.23/dist/sweetalert2.all.min.js"></script>
+    <script type="module" src="./assets/js/app.js"></script>
+</body>
+
+</html>
